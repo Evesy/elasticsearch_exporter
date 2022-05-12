@@ -233,7 +233,7 @@ func NewSLM(logger log.Logger, client *http.Client, url *url.URL) *SLM {
 			Desc: prometheus.NewDesc(
 				prometheus.BuildFQName(namespace, "slm_stats", "operation_mode"),
 				"Operating status of SLM",
-				defaultPolicyLabels, nil,
+				[]string{"operation_mode"}, nil,
 			),
 			Value: func(slmStatus SLMStatusResponse, operationMode string) float64 {
 				if slmStatus.OperationMode == operationMode {
